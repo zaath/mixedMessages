@@ -13,13 +13,17 @@ const footballData = {
         },
         */
     teams2: ["Juventus Turin", "AC Milan", "Sassuolo", "Lazio Roma", "FC Bologna"],
-    stadiums: ["San Siro", "Parc des Princes", "Stade Vélodrome", "Bernabeu", "Westfalen Stadion"],
+    stadiums: [
+        {stadiumName:"San Siro", stadiumAff: "70.000"}, 
+        {stadiumName:"Parc des Princes", stadiumAff: "45.000"}, 
+        {stadiumName:"Velodrome", stadiumAff: "60.000"}, 
+        {stadiumName:"Bernabeu", stadiumAff: "80.000"}, 
+        {stadiumName:"Westfalen Stadion", stadiumAff: "88.000"}
+    ],
     vips: ["David Beckham", "Jay-Z & Beyonce", "Avril Lavigne", "Michael Jackson", "Prince", "Prince Charles"]
 }
 
-// generer a chaque fois un random number pour extraire de chacune des arrays la valeur
-// creer une phrase avec la valeur en question pour mettre en contexte
-// tout mettre ensemble et formatter
+console.log(Object.values(footballData.stadiums));
 
 let selectedIdxs = [];
 
@@ -27,29 +31,18 @@ function createGame () {
     for (prop in footballData) {
         let propIdx = generateRandomNumber(footballData[prop].length)
         selectedIdxs.push((footballData[prop][propIdx]));
+        console.log(propIdx, selectedIdxs)
     }
 
     let theGame = {
         team1: selectedIdxs[0],
         team2: selectedIdxs[1],
-        stadium: selectedIdxs[2],
+        stadiumName: selectedIdxs[2].stadiumName,
+        stadiumAff: selectedIdxs[2].stadiumAff,
         vip: selectedIdxs[3]
     } 
     
-    console.log(`Bienvenue dans ce match entre ${theGame.team1} et ${theGame.team2} dans le magnifique ${theGame.stadium}! La tension est à son comble pour ce match si important, auquel assiste même des célébrités telles que ${theGame.vip}. C'est l'heure, que le meilleur gagne!`)
+    console.log(`Bienvenue dans ce match entre ${theGame.team1} et ${theGame.team2} dans le magnifique ${theGame.stadiumName}! ${theGame.stadiumAff} spectateurs sont attendus aujourd'hui. La tension est donc à son comble pour ce match si important, auquel assiste même des célébrités telles que ${theGame.vip}. C'est l'heure, que le meilleur gagne!`)
 }
 
 createGame();
-
-/*
-
-let gameObj = {
-    team 1: "",
-    team 2: "",
-    stadium: "",
-    vip: ""
-}
-
-*/
-
-// populate arrays avec les 3 premieres propIdx. On aura besoin plus tard d'une 4e valeur pour la 2eme equipe. Populater ensuite un objet avec les noms decoulant des idx.
